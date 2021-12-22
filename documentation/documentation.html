@@ -1,0 +1,53 @@
+This is the documentation page for My Movies app
+
+Middleware utilized:
+  Morgan: this middleware will provide logging of inquiries
+  Express: enables the accessing of endpoints through GET, POST, PUT, and DELETE commands
+
+***ADDING DATA****
+  Since we're using a JSON format, it's important to have information covering formatting for new objects to be added to data list through the app.post end point
+  For example:
+  {
+    movie: 'Mad Max',
+    year: '1979',
+    director: 'George Miller',
+    category: [
+      'Sci-fi',
+      'Action'
+    ]
+  },
+
+  App Endpoints:
+  app.post -> '/students'
+    Allows the addition of students to data list
+
+  app.delete -> '/students/:id'
+    Will remove student and data points specific to the ID entered
+
+  app.put -> '/students/:name/:class/:grade'
+    Will update grade of class of student specified
+
+  app.get -> '/students/:name/:gpa'
+    Will return return gpa of student name specified (followed by /)
+
+
+  ***MONGO***
+  Tables used: movies, genres, directors, users
+
+  Commands:
+  db.movies.find().pretty()
+  db.users.find().pretty()
+  db.movies.find({ "Genre.name" : "Thriller" })
+  db.users.findOne({ "Username" : "test1" })
+
+  db.movies.update(
+    { _id : ObjectId("...")},
+    { $set : { Description: "Update description" }}
+  )
+
+  db.movies.update(
+    { _id : ObjectId("...")},
+    { $push : { FavoriteMovies: [ ObjectId("..."), ObjectId("...")] }}
+  )
+
+  db.movies.remove({ "Genre.name" : "Thriller" })
