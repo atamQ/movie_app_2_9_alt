@@ -23,7 +23,8 @@ const Users = Models.User;
 const Genres = Models.Genre;
 const Directors = Models.Director;
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let myLogger = (req, res, next) => {  //middleware
   console.log(req.url);
@@ -236,3 +237,5 @@ const port = process.env.PORT || 8080;
 applisten(port, '0.0.0.0', () => {
   console.log('Listening on port ' + port);
 });
+
+//mongodb+srv://user-matt:LOT2272D@myflixdb.7b6ot.mongodb.net/myFlixDB?retryWrites=true&w=majority
